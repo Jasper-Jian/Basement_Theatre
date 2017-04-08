@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Administrator\\Desktop\\Basement_Theatre\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\Basement_Theatre\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Basement_Theatre\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
         "source": "C:\\Users\\Administrator\\Basement_Theatre\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     }
