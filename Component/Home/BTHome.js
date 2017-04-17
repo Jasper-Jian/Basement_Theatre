@@ -12,10 +12,13 @@ import {
   View
 } from 'react-native';
 
+import SearchBar from '../Home/SearchBar';
+
 var Home = React.createClass({
   render() {
     return (
       <View style={styles.container}>
+      <SearchBar />
         <Text style={styles.welcome}>
           Home Page
         </Text>
@@ -27,8 +30,6 @@ var Home = React.createClass({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   welcome: {
