@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import{
+import {
     AppRegistry,
     StyleSheet,
     Text,
@@ -14,36 +14,21 @@ var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
 /*import external component*/
 var Register = require('./Register');
-var Mine = React.createClass ({
+var Login = require('./Login');
+var Mine = React.createClass({
     render() {
         return (
             <View style={styles.container}>
-                {/*use View to make username txt box*/}
-                <View style={styles.textInputViewStyle}>
-                    <TextInput
-                        style={styles.textInputStyle}
-                        //placeholder
-                        placeholder='username'
-                        textAlign='center'
-                        underlineColorAndroid={'transparent'} />
-                </View>
-                {/*password input box*/}
-                <View style={styles.textInputViewStyle}>
-                    <TextInput
-                        style={styles.textInputStyle}
-                        placeholder='password'
-                        textAlign='center'
-                        //invisibility of password
-                        secureTextEntry={true}/>
-                </View>
-                {/*clickable button*/}
-                <TouchableOpacity onPress={()=>{alert('Login')}}>
+                <Text style={styles.textAlert}>
+                    Seem like you haven't Login.
+                </Text>
+                <TouchableOpacity onPress={() => { this.pushToLogin() }}>
                     {/*login button*/}
                     <View style={styles.textLoginViewStyle}>
-                        <Text style={styles.textLoginStyle}>Login</Text>
+                        <Text style={styles.textLoginStyle}>GotoLoginPage</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=>{this.pushToDetail()}}>
+                <TouchableOpacity onPress={() => { this.pushToDetail() }}>
                     {/*register button*/}
                     <View style={styles.textLoginViewStyle}>
                         <Text style={styles.textLoginStyle}>Register</Text>
@@ -54,14 +39,22 @@ var Mine = React.createClass ({
     },
 
     //Goto Register
-    pushToDetail(){
+    pushToDetail() {
         this.props.navigator.push(
-        {
-            component:Register,//Navigate page
-            title:'Register with email'
-        }
-    );
-  }
+            {
+                component: Register,//Navigate page
+                title: 'Register with email'
+            }
+        );
+    },
+    pushToLogin() {
+        this.props.navigator.push(
+            {
+                component: Login,//Navigate page
+                title: 'Login with email'
+            }
+        );
+    }
 });
 
 const styles = StyleSheet.create({
@@ -72,31 +65,14 @@ const styles = StyleSheet.create({
         paddingTop: 140,
     },
 
-    textInputViewStyle: {
-        width: width - 30,
-        height: 45,
-        borderRadius: 18,
-        borderColor: 'blue',
-        borderWidth: 3,
-        paddingLeft: 10,
-        paddingRight: 10,
-        marginTop: 10,
-        marginLeft: 20,
-        marginRight: 20,
-        alignSelf: 'center',
-    },
-    //txt box style
-    textInputStyle: {
-        width: width - 30,
-        height: 35,
-        backgroundColor: '#00000000',
-        alignSelf: 'center',
-        marginTop: Platform.OS === 'ios' ? 4 : 8,
-    },
-
+   textAlert: {
+       alignSelf:'center',
+       color:'black',
+       fontSize:20,
+   },
     //login button style
     textLoginViewStyle: {
-        width:  200,
+        width: 200,
         height: 45,
         backgroundColor: 'red',
         borderRadius: 20,
