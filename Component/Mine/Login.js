@@ -31,6 +31,7 @@ var Login = React.createClass({
                         textAlign='center'
                         underlineColorAndroid={'transparent'} />
                 </View>
+
                 {/*password input box*/}
                 <View style={styles.textInputViewStyle}>
                     <TextInput
@@ -48,12 +49,14 @@ var Login = React.createClass({
                         <Text style={styles.textLoginStyle}>Login</Text>
                     </View>
                 </TouchableOpacity>
+
+                {/*register button*/}
                 <TouchableOpacity onPress={() => { this.pushToDetail() }}>
-                    {/*register button*/}
-                    <View style={styles.textLoginViewStyle}>
+                   <View style={styles.textLoginViewStyle}>
                         <Text style={styles.textLoginStyle}>Register</Text>
                     </View>
                 </TouchableOpacity>
+
                 {/*Facebook Login button*/}
                 <TouchableOpacity onPress={() => { this._fbAuth()}}>
                     {/*register button*/}
@@ -65,16 +68,16 @@ var Login = React.createClass({
         );
     },
     _fbAuth() {
-        LoginManager.logInWithPublishPermissions(['public_profile']).then(function (result) {
+        LoginManager.logInWithReadPermissions(['public_profile']).then(function (result) {
             if (result.isCancelled) {
                 console.log('Login cancelled');
             } else {
-                console.log('Login success:' + result.grantedPermissions.toString);
+                console.log('Login success:' + result.grantedPermissions);
             }
         },
             function (error) {
                 console.log('An error occured:' + error);
-            })
+            });
         },
 
     //Goto Register
