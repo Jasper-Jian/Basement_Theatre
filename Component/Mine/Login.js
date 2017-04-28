@@ -19,7 +19,38 @@ var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
 var Register = require('./Register');
 var Login = React.createClass({
+    constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+  },
+   componentDidMount() {
+    this._setupGoogleSignin();
+  },
     render() {
+         if (!this.state.user) {
+      return (
+        <View style={styles.container}>
+          <GoogleSigninButton style={{width: 120, height: 44}} color={GoogleSigninButton.Color.Light} size={GoogleSigninButton.Size.Icon} onPress={() => { this._signIn(); }}/>
+        </View>
+      );
+    }
+
+    if (this.state.user) {
+      return (
+        <View style={styles.container}>
+          <Text style={{fontSize: 18, fontWeight: 'bold', marginBottom: 20}}>Welcome {this.state.user.name}</Text>
+          <Text>Your email is: {this.state.user.email}</Text>
+
+          <TouchableOpacity onPress={() => {this._signOut(); }}>
+            <View style={{marginTop: 50}}>
+              <Text>Log out</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      );
+    }
         return (
             <View style={styles.container}>
                 {/*use View to make username txt box*/}
@@ -63,10 +94,9 @@ var Login = React.createClass({
                     <View style={styles.textLoginViewStyle}>
                         <Text style={styles.textLoginStyle}>Login with Facebook</Text>
                     </View>
-                </TouchableOpacity>
-                
-                <GoogleSigninButton style={{alignSelf: 'center',width: 200, height: 44}} color={GoogleSigninButton.Color.Light} size= {GoogleSigninButton.Size.Icon} onPress={() => {GoogleSignin.signIn()}}/>
+                </TouchableOpacity>            
             </View>
+            
         );
     },
     _fbAuth() {
@@ -81,7 +111,41 @@ var Login = React.createClass({
                 console.log('An error occured:' + error);
             });        
     },
+  async _setupGoogleSignin() {
+    try {
+      await GoogleSignin.hasPlayServices({ autoResolve: true });
+      await GoogleSignin.configure({
+        webClientId: '603421766430-60og8n04mebic8hi49u1mrcmcdmugnd5.apps.googleusercontent.com',
+        offlineAccess: false
+      });
 
+      const user = await GoogleSignin.currentUserAsync();
+      console.log(user);
+      this.setState({user});
+    }
+    catch(err) {
+      console.log("Play services error", err.code, err.message);
+    }
+  },
+
+  _signIn() {
+    GoogleSignin.signIn()
+    .then((user) => {
+      console.log(user);
+      this.setState({user: user});
+    })
+    .catch((err) => {
+      console.log('WRONG SIGNIN', err);
+    })
+    .done();
+  },
+
+  _signOut() {
+    GoogleSignin.revokeAccess().then(() => GoogleSignin.signOut()).then(() => {
+      this.setState({user: null});
+    })
+    .done();
+  },
     //Goto Register
     pushToDetail() {
         this.props.navigator.push(

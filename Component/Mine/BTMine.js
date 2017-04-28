@@ -8,7 +8,7 @@ import {
     Platform,
     TouchableOpacity
 } from 'react-native';
-
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 //get screen info
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
@@ -34,6 +34,7 @@ var Mine = React.createClass({
                         <Text style={styles.textLoginStyle}>Register</Text>
                     </View>
                 </TouchableOpacity>
+                 <GoogleSigninButton style={{alignSelf: 'center',width: 200, height: 44}} color={GoogleSigninButton.Color.Light} size= {GoogleSigninButton.Size.Icon} onPress={() => {GoogleSignin.signIn()}}/>
             </View>
         );
     },
