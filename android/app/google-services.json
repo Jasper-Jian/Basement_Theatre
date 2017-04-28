@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "624986151461",
+    "project_id": "firebase-basementtheatre"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624986151461:android:d939f6232db4e0d9",
+        "android_client_info": {
+          "package_name": "com.basement_theatre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624986151461-a536o3e1h9q8kpotie0efvau8uimgvt2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.basement_theatre",
+            "certificate_hash": "8466a9c315a6c5786bae92cced9377b4c2335293"
+          }
+        },
+        {
+          "client_id": "624986151461-ghge0s70j54dism65b9v7k2gfpjq411i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZyUTr1yQ_iVhFi5Wy5LbnIKxOT2sHAv0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

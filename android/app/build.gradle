@@ -83,6 +83,10 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
+    signingConfigs {
+        config {
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
     defaultConfig {
@@ -126,8 +130,13 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile "com.android.support:appcompat-v7:23.0.1"
     compile project(':react-native-fbsdk')
     compile 'com.facebook.react:react-native:+'
+    compile(project(":react-native-google-signin")){         
+        exclude group: "com.google.android.gms" // very important
+    }
+    compile 'com.google.android.gms:play-services-auth:9.2.1' // should be at least 9.0.0
     // From node_modules
 }
 
@@ -137,3 +146,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+apply plugin: 'com.google.gms.google-services'

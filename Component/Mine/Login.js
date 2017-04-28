@@ -9,11 +9,11 @@ import {
     TouchableOpacity
 } from 'react-native';
 import {LoginManager} from 'react-native-fbsdk';
-
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Mine from './BTMine';
 
 var CheckLogin = 0;
-
+const user = GoogleSignin.currentUser();
 //get Screen width
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
@@ -64,6 +64,8 @@ var Login = React.createClass({
                         <Text style={styles.textLoginStyle}>Login with Facebook</Text>
                     </View>
                 </TouchableOpacity>
+                
+                <GoogleSigninButton style={{alignSelf: 'center',width: 200, height: 44}} color={GoogleSigninButton.Color.Light} size= {GoogleSigninButton.Size.Icon} onPress={() => {GoogleSignin.signIn()}}/>
             </View>
         );
     },
@@ -77,8 +79,8 @@ var Login = React.createClass({
         },
             function (error) {
                 console.log('An error occured:' + error);
-            });
-        },
+            });        
+    },
 
     //Goto Register
     pushToDetail() {
