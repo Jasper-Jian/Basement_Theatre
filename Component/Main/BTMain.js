@@ -18,7 +18,6 @@ var Shop = require('../Event/BTEvent');
 var Mine = require('../Mine/BTMine');
 var More = require('../More/BTMore');
 
-
 var Main = React.createClass({
 
     // initialize home page state
@@ -111,6 +110,7 @@ var Main = React.createClass({
                 </TabNavigator.Item>
 
             </TabNavigator>
+
         );
     }
 });
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     iconStyle:{
         width: Platform.OS === 'ios' ? 30 : 25,
         height:Platform.OS === 'ios' ? 30 : 25
-    }
+    },
 });
 
 // 输出组件类

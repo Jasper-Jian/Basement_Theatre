@@ -7,7 +7,7 @@ import {
     StyleSheet
 } from 'react-native';
 
-var SearchBar = React.createClass( {
+var SearchBar = React.createClass({
     render() {
         return (
             <View style={styles.container}>
@@ -22,7 +22,7 @@ var SearchBar = React.createClass( {
                         />
                 </View>
             </View>
-        )
+        );
     }
 });
 
