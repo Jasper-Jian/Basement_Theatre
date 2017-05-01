@@ -7,7 +7,8 @@ import {
   View,
   ScrollView,
   Dimensions,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
 import SearchBar from '../Home/SearchBar';
@@ -26,7 +27,8 @@ var Home = React.createClass({
     return (
       <View style={styles.container}>
       <SearchBar />
-         <ScrollView
+        <ScrollView>
+        <ScrollView
         horizontal={true}   // horizontal allignment
         showsHorizontalScrollIndicator={false}  // Hide horizontal indicator
         showsVerticalScrollIndicator={false}    // Hide Vertical indicator
@@ -43,6 +45,53 @@ var Home = React.createClass({
        <View style={styles.indicatorStyle}>
           {this.renderPageCircle()}
        </View>
+
+      <View style={styles.TitleStyle}>
+          <Text style={styles.TitleText}>WHAT'S ON</Text>
+          <View style={styles.ImageBox}>
+              <Image source={{uri: 'https://static1.squarespace.com/static/5535bce1e4b071a2f7e12732/55a85f73e4b0a37bc13840e6/58b49d6a17bffc07f1c3d46d/1488243609528/Pedal+Basement+400x400.png'}}style={styles.TitleitemStyle}/>
+              <Text style={styles.DetailText}>PEDAL</Text>
+              <View style={styles.Divider}></View>
+              <Text style={styles.TimeText}>4 MAR, 5:00 PM</Text>
+              <View style={styles.Divider}></View>
+              <View style={styles.InfoBTStyle}>
+              <TouchableOpacity onPress={() => { alert('More Info') }}>
+                  {/*Info button*/}
+                  <View style={styles.InfoViewStyle}>
+                      <Text style={styles.MoreInfoText}>More Info</Text>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => { alert('Book Now') }}>
+                  {/*Info button*/}
+                  <View style={styles.BookNowViewStyle}>
+                      <Text style={styles.BookNowText}>Book Now</Text>
+                  </View>
+              </TouchableOpacity>
+              </View>
+          </View>
+          <View style={styles.ImageBox}>
+              <Image source={{uri: 'https://static1.squarespace.com/static/5535bce1e4b071a2f7e12732/55a85f73e4b0a37bc13840e6/58b49d6a17bffc07f1c3d46d/1488243609528/Pedal+Basement+400x400.png'}}style={styles.TitleitemStyle}/>
+              <Text style={styles.DetailText}>PEDAL</Text>
+              <View style={styles.Divider}></View>
+              <Text style={styles.TimeText}>4 MAR, 5:00 PM</Text>
+              <View style={styles.Divider}></View>
+              <View style={styles.InfoBTStyle}>
+              <TouchableOpacity onPress={() => { alert('More Info') }}>
+                  {/*Info button*/}
+                  <View style={styles.InfoViewStyle}>
+                      <Text style={styles.MoreInfoText}>More Info</Text>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => { alert('Book Now') }}>
+                  {/*Info button*/}
+                  <View style={styles.BookNowViewStyle}>
+                      <Text style={styles.BookNowText}>Book Now</Text>
+                  </View>
+              </TouchableOpacity>
+              </View>
+          </View>
+     </View>
+     </ScrollView>
       </View>
     );
   },
@@ -81,6 +130,10 @@ var Home = React.createClass({
 });
 
 const styles = StyleSheet.create({
+  container:{
+    flexDirection:'column',
+
+  },
   itemStyle: {
       width:Dimensions.get('window').width,
       height:200,
@@ -89,12 +142,99 @@ const styles = StyleSheet.create({
     width:Dimensions.get('window').width,
     height:25,
     backgroundColor: 'rgba(0,0,0,0.4)',
-    position:'absolute',
-    bottom:0,
+    bottom:25,
     justifyContent:'flex-end',
     flexDirection:'row',
     alignItems:'center',
-
+    margin:0,
+    padding:0,
+  },
+  TitleStyle:{
+    bottom:25,
+    height: 1200,
+    width: Dimensions.get('window').width,
+    backgroundColor: 'rgba(0,0,255,1)',
+    alignItems:'center',
+  },
+  TitleText:{
+    fontSize:23,
+    color:'white',
+    fontWeight:'800',
+  },
+  TitleitemStyle:{
+    margin:25,
+    marginBottom:0,
+    marginTop:10,
+    height: 180,
+    resizeMode: 'cover'
+  },
+  ImageBox:{
+    margin:10,
+    height:300,
+    backgroundColor:'rgba(255,255,255,1)',
+    width: Dimensions.get('window').width-50,
+  },
+  DetailText:{
+    color:'blue',
+    fontSize:20,
+    justifyContent:'flex-start',
+    marginLeft:25,
+    fontWeight:'800',
+  },Divider:{
+    marginLeft:25,
+    marginRight:25,
+    borderStyle:'solid',
+    borderBottomWidth:1,
+    borderBottomColor : 'blue',
+  },TimeText:{
+    marginLeft:25,
+    color:'blue',
+    fontWeight:'400',
+  },
+  InfoBTStyle:{
+    flexDirection:'row',
+  },
+  InfoViewStyle:{
+    marginLeft:25,
+    width: 160,
+    height: 35,
+    backgroundColor: 'blue',
+    marginTop: 10,
+    alignSelf: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  MoreInfoText:{
+    marginTop:8,
+    color:'white',
+    fontWeight:'400',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  BookNowViewStyle:{
+    width: 160,
+    marginLeft:-1,
+    height: 35,
+    backgroundColor: 'white',
+    borderStyle:'solid',
+    borderColor : 'blue',
+    borderWidth:0.8,
+    marginTop: 10,
+    alignSelf: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  BookNowText:{
+    marginTop:7,
+    color:'blue',
+    fontWeight:'400',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
+
+
+
 });
 module.exports = Home;
