@@ -4,6 +4,7 @@ import {
     StyleSheet,
     Text,
     View,
+    Image,
     TextInput,
     Platform,
     TouchableOpacity
@@ -18,10 +19,12 @@ var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
 var Register = require('./Register');
 var Login = React.createClass({
-    render() {        
+    render() {
         return (
             <View style={styles.container}>
+              <Image source={{uri: 'https://basement-theatre.squarespace.com/assets/images/logo-expanded.png'}} style={styles.itemStyle}>
                 {/*use View to make username txt box*/}
+                <View style={styles.LoginBox}>
                 <View style={styles.textInputViewStyle}>
                     <TextInput
                         style={styles.textInputStyle}
@@ -62,10 +65,11 @@ var Login = React.createClass({
                     <View style={styles.textLoginViewStyle}>
                         <Text style={styles.textLoginStyle}>Login with Facebook</Text>
                     </View>
-                </TouchableOpacity>           
-                 <GoogleSigninButton style={{alignSelf: 'center',width: 200, height: 44}} color={GoogleSigninButton.Color.Light} size= {GoogleSigninButton.Size.Icon} onPress={() => {GoogleSignin.signIn()}}/> 
+                </TouchableOpacity>
+                 <GoogleSigninButton style={styles.textLoginViewStyle} color={GoogleSigninButton.Color.Light} size= {GoogleSigninButton.Size.Icon} onPress={() => {GoogleSignin.signIn()}}/>
+                 </View>
+                 </Image>
             </View>
-            
         );
     },
     _fbAuth() {
@@ -78,7 +82,7 @@ var Login = React.createClass({
         },
             function (error) {
                 console.log('An error occured:' + error);
-            });        
+            });
     },
 
     //Goto Register
@@ -96,22 +100,17 @@ const styles = StyleSheet.create({
     container: {
         //set to full screen
         flex: 1,
-        backgroundColor: 'skyblue',
-        paddingTop: 140,
+    },LoginBox:{
+      paddingTop:70,
     },
-
     textInputViewStyle: {
-        width: width - 30,
+        width: width - 90,
         height: 45,
-        borderRadius: 18,
+        borderRadius: 10,
         borderColor: 'blue',
-        borderWidth: 3,
-        paddingLeft: 10,
-        paddingRight: 10,
-        marginTop: 10,
-        marginLeft: 20,
-        marginRight: 20,
-        alignSelf: 'center',
+        borderWidth: 2,
+        marginTop:10,
+        alignSelf: 'flex-start',
     },
     //txt box style
     textInputStyle: {
@@ -128,7 +127,8 @@ const styles = StyleSheet.create({
         height: 45,
         backgroundColor: 'red',
         borderRadius: 20,
-        marginTop: 30,
+        marginTop: 20,
+        marginRight:60,
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
@@ -137,6 +137,14 @@ const styles = StyleSheet.create({
     textLoginStyle: {
         fontSize: 18,
         color: 'white',
-    },
+    },itemStyle:{
+      position:'absolute',
+      left:10,
+      height:350,
+      margin:10,
+      marginRight:20,
+      width:width-30,
+      resizeMode: 'stretch'
+    }
 });
 module.exports = Login;

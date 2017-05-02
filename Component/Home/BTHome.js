@@ -70,10 +70,10 @@ var Home = React.createClass({
               </View>
           </View>
           <View style={styles.ImageBox}>
-              <Image source={{uri: 'https://static1.squarespace.com/static/5535bce1e4b071a2f7e12732/55a85f73e4b0a37bc13840e6/58b49d6a17bffc07f1c3d46d/1488243609528/Pedal+Basement+400x400.png'}}style={styles.TitleitemStyle}/>
-              <Text style={styles.DetailText}>PEDAL</Text>
+              <Image source={{uri: 'https://static1.squarespace.com/static/5535bce1e4b071a2f7e12732/55a85f73e4b0a37bc13840e6/58b49c6c5016e1b99ef70151/1488243646158/400x400+shoot+the+freak.jpg'}}style={styles.TitleitemStyle}/>
+              <Text style={styles.DetailText}>SHOOT THE FREAK</Text>
               <View style={styles.Divider}></View>
-              <Text style={styles.TimeText}>4 MAR, 5:00 PM</Text>
+              <Text style={styles.TimeText}>4 - 11 MAR 2017, VARIOUS TIMES</Text>
               <View style={styles.Divider}></View>
               <View style={styles.InfoBTStyle}>
               <TouchableOpacity onPress={() => { alert('More Info') }}>
@@ -88,8 +88,38 @@ var Home = React.createClass({
                       <Text style={styles.BookNowText}>Book Now</Text>
                   </View>
               </TouchableOpacity>
-              </View>
+            </View>
           </View>
+          <View style={styles.ImageBox}>
+              <Image source={{uri: 'https://static1.squarespace.com/static/5535bce1e4b071a2f7e12732/55a85f73e4b0a37bc13840e6/58b498a49de4bb3b2b0d2109/1488241362367/Castles+Basement+400x400.png'}}style={styles.TitleitemStyle}/>
+              <Text style={styles.DetailText}>CASTLES</Text>
+              <View style={styles.Divider}></View>
+              <Text style={styles.TimeText}>28 FEB - 4 MAR 2017, VARIOUS TIMES</Text>
+              <View style={styles.Divider}></View>
+              <View style={styles.InfoBTStyle}>
+              <TouchableOpacity onPress={() => { alert('More Info') }}>
+                  {/*Info button*/}
+                  <View style={styles.InfoViewStyle}>
+                      <Text style={styles.MoreInfoText}>More Info</Text>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => { alert('Book Now') }}>
+                  {/*Info button*/}
+                  <View style={styles.BookNowViewStyle}>
+                      <Text style={styles.BookNowText}>Book Now</Text>
+                  </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        <View style={{flexDirection:'row'}}>
+          <Text style={{fontSize:23,color:'white',margin:10}}>Coming Soon</Text>
+          <TouchableOpacity onPress={() => { alert('More Event') }}>
+              {/*More button*/}
+              <View style={styles.BookNowViewStyle}>
+                  <Text style={styles.BookNowText}>More Events</Text>
+              </View>
+          </TouchableOpacity>
+        </View>
      </View>
      </ScrollView>
       </View>
