@@ -8,33 +8,54 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  Image,
   Text,
-  View
+  View,
+  Dimensions
 } from 'react-native';
+import Mainstyles from '../StylesSheet';
+var {width}=Dimensions.get('window').width;
 
 var Event = React.createClass( {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Event Page
-        </Text>
+        <View style={styles.EventImageBox}>
+        <View>
+          <Image source={{uri: 'https://static1.squarespace.com/static/5535bce1e4b071a2f7e12732/55a85f73e4b0a37bc13840e6/58b4cd72e3df28ac9a90cee6/1488246289326/A_Figure_Exhales_400x400.jpg'}} style={styles.EventImageItem}></Image>
+        </View>
+          <View>
+            <Text style={Mainstyles.TitleText}>A FIGURE EXHALES
+            </Text>
+            <View style={styles.Divider}></View>
+            <Text style={Mainstyles.TitleText}>
+            21 - 25 MAR 2017, 8:00PM
+            </Text>
+            <View style={styles.Divider}></View>
+          </View>
+        </View>
       </View>
     );
   }
 });
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  container:{
+    flexDirection:'column',
+    backgroundColor:'blue',
+    flex:1
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  EventImageItem:{
+    height:150,
+    resizeMode:'stretch',
+    width:width,
+  },
+  Divider:{
+    borderStyle:'solid',
+    borderBottomWidth:1,
+    borderBottomColor : 'white',
+  },
+  EventImageBox:{
+    flexDirection:'row',
   },
 });
 module.exports = Event;
