@@ -28,19 +28,19 @@ var Mine = React.createClass({
                         <Text style={styles.textLoginStyle}>GotoLoginPage</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { this.pushToDetail() }}>
+                <TouchableOpacity onPress={() => { this.pushToRegister() }}>
                     {/*register button*/}
                     <View style={styles.textLoginViewStyle}>
                         <Text style={styles.textLoginStyle}>Register</Text>
                     </View>
                 </TouchableOpacity>
-                
+
             </View>
         );
     },
 
     //Goto Register
-    pushToDetail() {
+    pushToRegister() {
         this.props.navigator.push(
             {
                 component: Register,//Navigate page

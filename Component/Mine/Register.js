@@ -6,10 +6,11 @@ import{
     View,
     TextInput,
     Platform,
-    TouchableOpacity
+    TouchableOpacity,
+    Navigator
 } from 'react-native';
-
-import Mine from './BTMine';
+var Mine = require('./BTMine');
+var Login = require('./Login');
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
 var Register = React.createClass({
@@ -48,15 +49,15 @@ var Register = React.createClass({
                     <Text style={styles.textLoginStyle}>Register</Text>
                 </View>
             </TouchableOpacity>
-        <TouchableOpacity onPress={this.popToLogIn()}>
+        <TouchableOpacity onPress={this.pushBack()}>
         <Text>Already have a Account? Go back to login Page</Text>
         </TouchableOpacity>
         </View>
 
         );
     },
-    popToLogIn(){
-        this.props.navigator.pop();
+    pushBack() {
+        this.props.navigator.pop(Mine);
     }
 });
 const styles = StyleSheet.create({

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import styles from '../StylesSheet';
 import SearchBar from '../Home/SearchBar';
+import Event from '../Event/BTEvent';
 var ImageData = require('../ImageData.json');
 var TimerMixin = require('react-timer-mixin');//import timer
 
@@ -113,7 +114,7 @@ var Home = React.createClass({
           </View>
         <View style={{flexDirection:'row'}}>
           <Text style={{fontSize:23,color:'white',margin:10}}>Coming Soon</Text>
-          <TouchableOpacity onPress={() => { alert('More Event') }}>
+          <TouchableOpacity onPress={() => {this.pushToEvent()}}>
               {/*More button*/}
               <View style={styles.BookNowViewStyle}>
                   <Text style={styles.BookNowText}>More Events</Text>
@@ -157,6 +158,14 @@ var Home = React.createClass({
       console.log(currentPage);
       this.setState({currentPage:currentPage});
     },
+    pushToEvent() {
+          this.props.navigator.push(
+              {
+                  component: Event,//Navigate page
+                  title: 'Event'
+              }
+          );
+      }
 });
 
 module.exports = Home;

@@ -7,17 +7,19 @@ import {
     Image,
     TextInput,
     Platform,
-    TouchableOpacity
+    TouchableOpacity,
+    Navigator
 } from 'react-native';
 import {LoginManager} from 'react-native-fbsdk';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-import Mine from './BTMine';
 
+var Register = require('./Register');
+var Mine = require('./BTMine');
 var CheckLogin = 0;
 //get Screen width
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
-var Register = require('./Register');
+
 var Login = React.createClass({
     render() {
         return (
@@ -53,7 +55,7 @@ var Login = React.createClass({
                 </TouchableOpacity>
 
                 {/*register button*/}
-                <TouchableOpacity onPress={() => { this.pushToDetail() }}>
+                <TouchableOpacity onPress={() => { this._ToRegister()}}>
                    <View style={styles.textLoginViewStyle}>
                         <Text style={styles.textLoginStyle}>Register</Text>
                     </View>
@@ -84,9 +86,8 @@ var Login = React.createClass({
                 console.log('An error occured:' + error);
             });
     },
-
     //Goto Register
-    pushToDetail() {
+    _ToRegister() {
         this.props.navigator.push(
             {
                 component: Register,//Navigate page
