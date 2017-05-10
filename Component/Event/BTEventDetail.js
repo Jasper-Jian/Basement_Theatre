@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Image,
   Text,
@@ -10,11 +9,12 @@ import {
   ScrollView,
   BackAndroid
 } from 'react-native';
+
 import Mainstyles from '../StylesSheet';
 import Event from '../Event/BTEventDetail';
 var {width}=Dimensions.get('window').width;
 
-var EventDetails = React.createClass({
+export default class EventDetails extends Component{
   render() {
     return (
       <View style={styles.container}>
@@ -33,29 +33,23 @@ var EventDetails = React.createClass({
             A dance theatre romp for anyone who has clung (for dear life) to a certain special moment.Winner of Best of Fringe 2015 at the Dunedin Fringe.
             </Text>
             <Text style={Mainstyles.MoreInfoText}>
-            A brilliant visual masterpiece" - Theatreview.
+            A brilliant visual masterpiece - Theatreview.
             </Text>
-
             <Text style={Mainstyles.MoreInfoText}>
             DATE: 11 APR - 15 APR
             </Text>
-
             <Text style={Mainstyles.MoreInfoText}>
-            TIME: 8:00PM
+            TIME: 8:00 PM
             </Text>
-
             <Text style={Mainstyles.MoreInfoText}>
             RUNTIME: 50 MINUTES
             </Text>
-
             <Text style={Mainstyles.MoreInfoText}>
             VENUE: THEATRE
             </Text>
-
             <Text style={Mainstyles.MoreInfoText}>
             PRICE: $16 - $20
             </Text>
-
           </View>
             <TouchableOpacity onPress={() => {this._Back()}}>
               <View style={styles.textLoginViewStyle}>
@@ -65,17 +59,15 @@ var EventDetails = React.createClass({
             <Text style={Mainstyles.MoreInfoText}>
             * Concession prices available to: Seniors 65+, Students with ID, Equity Members with ID.
             </Text>
-
         </View>
       </ScrollView>
       </View>
     );
-  },
+  }
   _Back(){
       this.props.navigator.pop(Event); // 返回上一页
   }
-
-});
+};
 const styles = StyleSheet.create({
   container:{
     flexDirection:'column',
@@ -110,6 +102,4 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
           alignItems: 'center',
       },
-
 });
-module.exports = EventDetails;

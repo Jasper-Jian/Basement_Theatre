@@ -1,40 +1,43 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  Dimensions,
+  ScrollView,
+  Navigator,
 } from 'react-native';
 
-var More = React.createClass ({
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          More Page
-        </Text>
-      </View>
+import defaultMore from '../More/defaultMore';
+
+export default class More extends Component{
+  render(){
+    let defaultName = 'defaultMore';
+    let defaultComponent = defaultMore;
+
+    return(
+      <Navigator
+          initialRoute = {{name: defaultName, component: defaultComponent}}
+          configureScene = {(route) => {
+            return Navigator.SceneConfigs.FloatFromRight;}}
+          renderScene = {(route, navigator) =>{
+            let Component = route.component;
+            return <Component{...route.params} navigator = {navigator} />}}
+      />
     );
   }
-});
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex:1,
+    flexDirection:'column',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  headImage: {
+    width:Dimensions.get('window').width,
+    height:200,
+    resizeMode: 'stretch'
   },
 });
-module.exports = More;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
@@ -13,22 +12,24 @@ import {
 /**-----import component------**/
 import TabNavigator from 'react-native-tab-navigator';
 
-var Home = require('../Home/BTHome');
-var Shop = require('../Event/BTEvent');
-var Mine = require('../Mine/BTMine');
-var More = require('../More/BTMore');
 
-var Main = React.createClass({
+import Home from '../Home/BTHome';
+import Shop from '../Event/BTEvent';
+import Mine from '../Mine/BTMine';
+import More from '../More/BTMore';
+
+const HOME = 'home';
+
+export default class Main extends Component{
 
     // initialize home page state
-    getInitialState(){
-       return{
-           selectedTab:'home' // default as Home Page
-       }
-    },
+    constructor(props) {
+        super(props);
+        this.state = {selectedTab: HOME}
+    }
     render() {
         return (
-            <TabNavigator>
+            <TabNavigator tabBarStyle={{ backgroundColor:'#C0CCD9' }} >
                 {/*--Main--*/}
                 <TabNavigator.Item
                   title="Main"
@@ -110,17 +111,16 @@ var Main = React.createClass({
                 </TabNavigator.Item>
 
             </TabNavigator>
-
         );
     }
-});
+
+}
 
 const styles = StyleSheet.create({
+
     iconStyle:{
         width: Platform.OS === 'ios' ? 30 : 25,
-        height:Platform.OS === 'ios' ? 30 : 25
+        height:Platform.OS === 'ios' ? 30 : 25,
+
     },
 });
-
-// 输出组件类
-module.exports = Main;

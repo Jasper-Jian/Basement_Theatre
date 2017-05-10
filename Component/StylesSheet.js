@@ -1,7 +1,6 @@
 'use restict'
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -18,7 +17,8 @@ const StylesSheet = StyleSheet.create({
       width:Dimensions.get('window').width,
       height:200,
       resizeMode: 'stretch'
-  },indicatorStyle:{
+  },
+  indicatorStyle:{
     width:Dimensions.get('window').width,
     height:25,
     backgroundColor: 'rgba(0,0,0,0.4)',
@@ -60,13 +60,15 @@ const StylesSheet = StyleSheet.create({
     justifyContent:'flex-start',
     marginLeft:25,
     fontWeight:'800',
-  },Divider:{
+  },
+  Divider:{
     marginLeft:25,
     marginRight:25,
     borderStyle:'solid',
     borderBottomWidth:1,
     borderBottomColor : 'blue',
-  },TimeText:{
+  },
+  TimeText:{
     marginLeft:25,
     color:'blue',
     fontWeight:'400',
@@ -112,6 +114,52 @@ const StylesSheet = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  SearchBarContainer: {
+      flexDirection: 'row',
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 0,
+      height: 48,
+      backgroundColor: '#C0CCD9',
+      alignItems: 'center',
+  },
+  sideMenu: {
+      height: 35,
+      width: 35,
+      resizeMode: 'stretch'
+  },
+  searchBox: {
+      height: 30,
+      flexDirection: 'row',
+      borderRadius: 5,
+      backgroundColor: '#C0CCD9',
+      borderColor: 'black',
+      borderWidth: 2,
+      flex: 1,
+      alignItems: 'center',
+      marginLeft: 8,
+      marginRight: 12
+  },
+  searchIcon: {
+      marginLeft: 6,
+      marginRight: 6,
+      width: 16.7,
+      height: 16.7,
+      resizeMode: 'stretch'
+  },
+  searchInputText: {
+      flex: 1,
+      backgroundColor: 'transparent',
+      fontSize: 14,
+      marginTop: -6.65,
+      marginBottom: -6.65,
+
+  },
+  button:{
+        position:'absolute',
+        padding:20,
+        top:20
+    },
 });
   module.exports = StylesSheet;

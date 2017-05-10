@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
@@ -9,18 +8,20 @@ import {
     TouchableOpacity
 } from 'react-native';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
+
 //get screen info
 var Dimensions = require('Dimensions');
 var width = Dimensions.get('window').width;
+
 /*import external component*/
-var Register = require('./Register');
-var Login = require('./Login');
-var Mine = React.createClass({
+import Register from './Register';
+import Login from './Login';
+export default class Mine extends Component{
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.textAlert}>
-                    Seem like you haven't Login.
+                    Seem like you haven‘t Login.
                 </Text>
                 <TouchableOpacity onPress={() => { this.pushToLogin() }}>
                     {/*login button*/}
@@ -37,7 +38,7 @@ var Mine = React.createClass({
 
             </View>
         );
-    },
+    }
 
     //Goto Register
     pushToRegister() {
@@ -47,7 +48,7 @@ var Mine = React.createClass({
                 title: 'Register with email'
             }
         );
-    },
+    }
     pushToLogin() {
         this.props.navigator.push(
             {
@@ -56,13 +57,13 @@ var Mine = React.createClass({
             }
         );
     }
-});
+};
 
 const styles = StyleSheet.create({
     container: {
         //set to full screen
         flex: 1,
-        backgroundColor: 'skyblue',
+        backgroundColor: 'white',
         paddingTop: 140,
     },
 
@@ -88,4 +89,3 @@ const styles = StyleSheet.create({
         color: 'white',
     },
 });
-module.exports = Mine;
