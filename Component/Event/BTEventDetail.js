@@ -7,13 +7,14 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
-  BackAndroid
+  BackAndroid,
+  Linking
 } from 'react-native';
 
 import Mainstyles from '../StylesSheet';
 import Event from '../Event/BTEventDetail';
 var {width}=Dimensions.get('window').width;
-
+var DEFAULT_URL = 'https://www.iticket.co.nz/events/2017/may/the-faustus-project';
 export default class EventDetails extends Component{
   render() {
     return (
@@ -51,7 +52,7 @@ export default class EventDetails extends Component{
             PRICE: $16 - $20
             </Text>
           </View>
-            <TouchableOpacity onPress={() => {this._Back()}}>
+            <TouchableOpacity onPress={() => {Linking.openURL(DEFAULT_URL)}}>
               <View style={styles.textLoginViewStyle}>
                   <Text>Book Now</Text>
               </View>

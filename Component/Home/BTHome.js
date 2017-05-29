@@ -9,13 +9,16 @@ import {
   Dimensions,
   Image,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+   Linking,
 } from 'react-native';
 import SideMenu from 'react-native-side-menu';
 import Menu from '../Home/TabMenu';
 import styles from '../StylesSheet';
 import Bar from '../More/Bar';
 import Event from '../Event/BTEvent';
+import EventDetail from '../Event/BTEventDetail';
+
 var ImageData = require('../ImageData.json');
 var TimerMixin = require('react-timer-mixin');//import timer
 
@@ -102,13 +105,13 @@ export default class Home extends Component{
               <Text style={styles.TimeText}>4 MAR, 5:00 PM</Text>
               <View style={styles.Divider}></View>
               <View style={styles.InfoBTStyle}>
-              <TouchableOpacity onPress={() => { alert('More Info') }}>
+              <TouchableOpacity onPress={() => { this.pushToDetail() }}>
                   {/*Info button*/}
                   <View style={styles.InfoViewStyle}>
                       <Text style={styles.MoreInfoText}>More Info</Text>
                   </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => { alert('Book Now') }}>
+              <TouchableOpacity onPress={() => {this.pushToBooking()}}>
                   {/*Info button*/}
                   <View style={styles.BookNowViewStyle}>
                       <Text style={styles.BookNowText}>Book Now</Text>
@@ -123,13 +126,13 @@ export default class Home extends Component{
               <Text style={styles.TimeText}>4 - 11 MAR 2017, VARIOUS TIMES</Text>
               <View style={styles.Divider}></View>
               <View style={styles.InfoBTStyle}>
-              <TouchableOpacity onPress={() => { alert('More Info') }}>
+              <TouchableOpacity onPress={() => { this.pushToDetail() }}>
                   {/*Info button*/}
                   <View style={styles.InfoViewStyle}>
                       <Text style={styles.MoreInfoText}>More Info</Text>
                   </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => { alert('Book Now') }}>
+              <TouchableOpacity onPress={() => {this.pushToBooking()}}>
                   {/*Info button*/}
                   <View style={styles.BookNowViewStyle}>
                       <Text style={styles.BookNowText}>Book Now</Text>
@@ -144,13 +147,13 @@ export default class Home extends Component{
               <Text style={styles.TimeText}>28 FEB - 4 MAR 2017, VARIOUS TIMES</Text>
               <View style={styles.Divider}></View>
               <View style={styles.InfoBTStyle}>
-              <TouchableOpacity onPress={() => { alert('More Info') }}>
+              <TouchableOpacity onPress={() => { this.pushToDetail() }}>
                   {/*Info button*/}
                   <View style={styles.InfoViewStyle}>
                       <Text style={styles.MoreInfoText}>More Info</Text>
                   </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => { alert('Book Now') }}>
+              <TouchableOpacity onPress={() => {this.pushToBooking()}}>
                   {/*Info button*/}
                   <View style={styles.BookNowViewStyle}>
                       <Text style={styles.BookNowText}>Book Now</Text>
@@ -214,7 +217,23 @@ export default class Home extends Component{
            }
       );
    }
-};
+   pushToDetail() {
+     this.props.navigator.push(
+          {
+              component: EventDetail,//Navigate page
+              title: 'EventDetail'
+          }
+     );
+  }
+  pushToBooking(){
+    var url = 'https://www.iticket.co.nz/events/2017/may/the-faustus-project';
+     Linking.openURL(url)
+     .catch((err)=>{
+       console.log('An error occurred', err);
+     });
+  }
+
+}
 class Button extends Component{
     _handlePress(e){
         if(this.props.onPress){
