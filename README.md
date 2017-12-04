@@ -21,3 +21,5 @@ To
 
 
 compile('com.facebook.android:facebook-android-sdk:4.22.1')
+
+Full project files could download via https://pan.baidu.com/s/1o7ZXFfG password：2mxj
